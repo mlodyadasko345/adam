@@ -1,0 +1,189 @@
+/* === Ustawienia ogólne dla całej strony === */
+body {
+  margin: 0; /* Usunięcie domyślnego marginesu przeglądarki */
+  padding: 0; /* Usunięcie domyślnego paddingu */
+  height: 100vh; /* Ustawienie wysokości na 100% wysokości okna */
+  background-color: #f5f5dc; /* Pastelowe beżowe tło */
+  font-family: 'Quicksand', sans-serif; /* Nowoczesna, miękka czcionka */
+  color: #3b3b3b; /* Ciemnoszary kolor tekstu */
+}
+
+/* === Nagłówek strony === */
+header {
+  background-color: #d6e5d8; /* Delikatna pastelowa zieleń */
+  padding: 20px; /* Odstęp wewnątrz nagłówka */
+  display: flex; /* Układ w linii: menu | logo | nav */
+  align-items: center; /* Wyrównanie elementów w pionie (środek) */
+  justify-content: space-between; /* Równy rozstaw lewo–prawo */
+  flex-wrap: wrap; /* NIE pozwala, by elementy spadały do nowej linii */
+  font-family: quicksand, sans-serif; /* Upewniamy się, że nagłówek używa tej samej czcionki */
+  position: relative; /* Potrzebne, by logo z absolute odnosiło się do nagłówka */
+}
+
+/* === Logo === */
+.logo {
+  font-size: 28px; /* Wielkość tekstu */
+  font-weight: 600; /* Lekko pogrubione */
+  color: #2f4f4f; /* Ciemna morska zieleń */
+  margin: 0; /* Bez marginesów wokół logo */
+  text-align: center; /* Środkowanie tekstu wewnątrz logo */
+  position: absolute; /* Wyjmujemy logo z normalnego przepływu */
+  left: 50%; /* Przesuwamy do środka nagłówka */
+  transform: translateX(-50%); /* Cofamy o 50% szerokości, by idealnie wyśrodkować */
+}
+
+/* === Menu (ikona ≡) === */
+.menu {
+  font-size: 28px; /* Rozmiar ikony menu */
+  cursor: pointer; /* Ręka przy najechaniu – klikalność */
+  color: #2f4f4f; /* Ten sam kolor co logo dla spójności */
+}
+
+/* === Nawigacja === */
+nav ul {
+  list-style: none; /* Usunięcie kropek z listy */
+  display: flex; /* Elementy <li> będą obok siebie */
+  gap: 20px; /* Odstęp między elementami listy */
+  padding: 0; /* Usunięcie paddingu z listy */
+  margin: 0; /* Usunięcie marginesu */
+}
+
+nav li {
+  font-size: 18px; /* Wielkość czcionki menu */
+  color: #3b3b3b; /* Ciemnoszary kolor tekstu */
+  transition: color 0.3s ease; /* Płynna zmiana koloru przy najechaniu */
+  cursor: pointer; /* Ręka – sugeruje, że element jest klikalny */
+  
+
+}
+
+nav li:hover {
+  color: #709775; /* Zmiana koloru na pastelową zieleń przy najechaniu */
+}
+
+.link-nav {
+  color: inherit;        /* Kolor tekstu taki jak rodzica (np. czarny, szary) */
+  text-decoration: none; /* Usuwa podkreślenie */
+  cursor: pointer;       /* Kursor ręki na linku */
+}
+
+
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap; /* Pozwól elementom się zawinąć */
+    justify-content: center; /* Logo, menu i nawigacja będą wyśrodkowane */
+    padding: 10px;
+  }
+
+  .menu {
+    order: 1; /* Przesuń menu wyżej */
+  }
+
+  .logo {
+    position: static; /* Przestaje być absolutne */
+    transform: none; /* Nie przesuwaj go */
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  nav ul {
+    flex-direction: column; /* Menu w pionie */
+    align-items: center; /* Wyśrodkuj linki */
+    gap: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* === Główna sekcja strony (hero) === */
+.hero {
+  display: flex;                /* Flexbox dla ułożenia w poziomie */
+  justify-content: center;      /* Wyśrodkuj zawartość poziomo */
+  align-items: center;          /* Wyśrodkuj zawartość pionowo */
+  min-height: 80vh;             /* Minimalna wysokość = 80% wysokości okna */
+  background-color: #f5f5dc;   /* Beżowe tło, spójne z resztą strony */
+  padding: 40px 20px;  
+}
+
+/* Kontener zdjęcia i tekstu */
+.hero-content {
+  display: flex;                /* Flexbox dla ułożenia zdjęcia i tekstu obok siebie */
+  align-items: center;          /* Wyrównanie w pionie (środek) */
+  gap: 40px;                    /* Odstęp między zdjęciem a tekstem */
+  flex-wrap: wrap;              /* Pozwala przełamać linię na mniejszych ekranach */
+  max-width: 1000px;            /* Maksymalna szerokość, by nie rozciągać za bardzo */
+}
+
+/* Styl zdjęcia */
+.profile-photo {
+  width: 250px;                 /* Stała szerokość zdjęcia */
+  max-width: 90vw;              /* Maksymalna szerokość to 90% szerokości ekranu (mobilne urządzenia) */
+  height: auto;                 /* Automatyczna wysokość by zachować proporcje */
+  border-radius: 20px;          /* Zaokrąglone rogi zdjęcia */
+  object-fit: contain;          /* Dopasuj obraz w kontenerze bez rozciągania */
+}
+
+/* Kontener tekstu i ikon */
+.intro {
+  display: flex;                /* Flexbox dla pionowego ułożenia tekstu i ikon */
+  flex-direction: column;       /* Ustawiamy elementy jeden pod drugim */
+  align-items: flex-start;      /* Tekst i ikonki wyrównane do lewej */
+  gap: 20px;                   /* Odstęp między tekstem a ikonami */
+}
+
+/* Krótki tekst powitalny */
+.intro-text {
+  font-size: 1.2rem;            /* Wielkość tekstu */
+  color: #3b3b3b;               /* Ciemnoszary kolor, spójny z resztą strony */
+  max-width: 400px;             /* Maksymalna szerokość, by tekst był czytelny */
+  line-height: 1.5;             /* Odstępy między wierszami */
+}
+
+/* Kontener z ikonami społecznościowymi */
+.social-links {
+  display: flex;                /* Ustawienie ikon w linii */
+  gap: 20px;                   /* Odstęp między ikonami */
+}
+
+/* Styl ikon */
+.social-links img {
+  width: 32px;                  /* Rozmiar ikon */
+  height: 32px;                 /* Wysokość ikon */
+  transition: transform 0.3s ease; /* Płynna animacja przy najechaniu */
+  cursor: pointer;              /* Zmiana kursora na rękę */
+}
+
+/* Efekt powiększenia ikony przy najechaniu */
+.social-links img:hover {
+  transform: scale(1.2);
+}
+
+/* === Responsywność: na ekranach mniejszych niż 768px === */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;     /* Ustawienie zdjęcia i tekstu pod sobą */
+    gap: 30px;                  /* Większy odstęp pionowy */
+    text-align: center;         /* Wyśrodkowanie tekstu i ikon */
+    align-items: center;        /* Wyśrodkowanie elementów */
+  }
+
+  .intro {
+    align-items: center;        /* Wyśrodkuj tekst i ikonki */
+  }
+
+  .intro-text {
+    max-width: 90vw;            /* Tekst dostosowuje się do szerokości ekranu */
+  }
+}
+
+footer {
+  background-color: #d6e5d8; /* Delikatna pastelowa zieleń */
+  color: #3b3b3b; /* Ciemnoszary kolor tekstu */
+  text-align: center; /* Wyśrodkowanie tekstu w stopce */
+  padding: 20px; /* Odstęp wewnętrzny */
+  font-size: 14px; /* Wielkość czcionki w stopce */
+}
+footer p {
+  margin: 5px 0; /* Marginesy między paragrafami */
+}
+
